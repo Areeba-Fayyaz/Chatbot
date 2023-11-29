@@ -1,0 +1,72 @@
+version: "3.1"
+intents:
+  - greet
+  - request_restaurant
+  - affirm
+  - deny
+  - inform
+  - thankyou
+  - chitchat
+  - stop
+  - bot_challenge
+
+entities:
+  - cuisine
+  - seating
+  - feedback
+
+slots:
+  cuisine:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: cuisine
+  seating:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: seating
+  feedback:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: feedback
+
+
+responses:
+  utter_greet:
+    - text: "Hello! How can I assist you today?"
+  utter_request_restaurant:
+    - text: "What type of restaurant are you looking for?"
+  utter_affirm:
+    - text: "Great! Let's proceed."
+  utter_deny:
+    - text: "Okay, let's try something else."
+  utter_inform:
+    - text: "Thank you for the information."
+  utter_thankyou:
+    - text: "You're welcome!"
+  utter_chitchat:
+    - text: "I'm just a bot, but I'm here to chat!"
+  utter_stop:
+    - text: "If you need anything else, just let me know."
+  utter_bot_challenge:
+    - text: "I am a bot designed to assist you."
+
+actions:
+  - utter_greet
+  - utter_request_restaurant
+  - utter_affirm
+  - utter_deny
+  - utter_inform
+  - utter_thankyou
+  - utter_chitchat
+  - utter_stop
+  - utter_bot_challenge
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

@@ -1,44 +1,31 @@
-
-.chat-log{
+.chat-log {
     height: 28rem;
     max-height: 28rem;
-    border: 1px solid black;
     overflow-y: auto;
-    border-radius: 1px;
-    scrollbar-width: none;
-    
+    scrollbar-width: none; /* Hides scrollbar for non-WebKit browsers */
 }
 
 .chat-log::-webkit-scrollbar {
-    display: none; /* For WebKit browsers like Chrome and Safari */
-}
-/* .chat-messages{
-    padding: 10px;
-    margin: 10px;
-    
-} */
-#chat-message-submit{
-    width: -webkit-fill-available;
-    
+    display: none; /* Hides scrollbar for WebKit browsers like Chrome and Safari */
 }
 
-/* .col-md-1{
-    display: flex;
-    justify-content: center;
-} */
-h1{
-    display: flex;
-    justify-content: center;
-    padding-top: 2rem;
+#chat-message-submit {
+    width: -webkit-fill-available; /* Ensures submit button width fills the available space in WebKit browsers */
 }
 
-.logout{
+h1 {
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem; /* Centers the h1 element and adds padding on top */
+}
+
+.logout {
     display: flex;
     justify-content: right;
-    padding-right: 5rem;
-    color: black;
+    padding-right: 5rem; /* Positions the logout button to the right with padding */
+    color: black; /* Sets the text color for the logout button */
 }
-.container{
-    margin-top: 1rem;
 
+.container {
+    margin-top: 1rem; /* Adds a top margin to the container */
 }

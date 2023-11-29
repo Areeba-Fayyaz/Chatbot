@@ -15,7 +15,7 @@ body {
     padding: 20px; /* Padding inside the container */
     width: 100%;
     max-width: 400px; /* Maximum width of the container */
-    margin: 20px 10px; /* Margin on the top and bottom is 20px, left and right is 10px */
+    margin: 20px auto; /* Centered margin with 20px on top and bottom */
     box-sizing: border-box; /* Include padding in the width */
 }
 
@@ -28,7 +28,7 @@ h3.register {
 
 /* Style each form field */
 form input, form button {
-    width: 100%;/* Full width minus padding */
+    width: 100%; /* Full width minus padding */
     margin-bottom: 0.5rem; /* Margin at the bottom of each form field */
 }
 
@@ -40,7 +40,6 @@ button {
     padding: 10px 0; /* Padding inside the button */
     margin-top: 1rem; /* Margin above the button */
     cursor: pointer; /* Pointer cursor on hover */
-    width: 100%;
 }
 
 /* Style for the login link */
@@ -48,7 +47,6 @@ p1 {
     display: block; /* Display link as a block */
     text-align: center; /* Center the link text */
     margin-top: 1rem; /* Margin above the link */
-     /* Blue text for the link */
     text-decoration: none; /* No underline on the link */
 }
 

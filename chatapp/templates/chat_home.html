@@ -31,24 +31,27 @@
             </button>
         </div>
         <h1>Welcome to My Chatbot!</h1>
+
         <div class="logout">
+            <button type="button" class="btn btn-danger mr-3">Clear history</button>
             {% if user.is_authenticated %}
-            <a href="{% url 'logout' %}">Logout</a>
+            <button type="button" class="btn btn-dark"><a href="{% url 'logout' %}"
+                    style="color: white; text-decoration: none;">Logout</a></button>
             {% else %}
             <a href="{% url 'login' %}">Login</a>|<a href="{% url 'register' %}">Register</a>
             {% endif %}
         </div>
         <hr>
-        <div class="container">
-            <div class="chat-log" id="chat-messages" >
+        <div class="container ">
+            <div class="chat-log shadow" id="chat-messages">
                 {% for message in message_history %}
-                    <div class="chat-messages">
-                        {% if message.is_bot %}
-                            <div class="chat-message p-4" style="background-color: #f4f4f4;"><strong>Chatbot: </strong> {{ message.message }}</div> 
-                        {% else %}
-                            <div class="chat-message m-4"><strong>You: </strong> {{ message.message }}</div> 
-                        {% endif %}
-                    </div>
+                <div class="chat-messages">
+                    {% if message.is_bot %}
+                    <div class="chat-message p-4" style="background-color: #f4f4f4;"><strong>Chatbot: </strong> {{message.message }}</div>
+                    {% else %}
+                    <div class="chat-message m-4"><strong>You: </strong> {{ message.message }}</div>
+                    {% endif %}
+                </div>
                 {% endfor %}
             </div><br>
 
@@ -63,47 +66,64 @@
             </div>
 
             <script type="text/javascript">
-                const chatSocket = new WebSocket(
-                    'ws://' + window.location.host + '/ws/chat/'
-                );
-
-                
+                const chatSocket = new WebSocket('ws://' + window.location.host + '/ws/chat/');
+                const messageInputDom = document.getElementById('chat-message-input');
+                const messageSubmitButton = document.getElementById('chat-message-submit');
 
                 chatSocket.onclose = function (e) {
                     console.error('Chat socket closed unexpectedly');
                 };
-                // document.querySelector('#chat-messages').scrollBottom = document.querySelector('#chat-messages').scrollHeight;
-              
+
+                function sendMessage() {
+                    const message = messageInputDom.value.trim();
+                    if (message !== '') {
+                        chatSocket.send(JSON.stringify({ 'message': message }));
+                        messageInputDom.value = '';
+                    }
+                }
+
+                messageInputDom.addEventListener('keypress', function (e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault(); // Prevent the default action (form submission)
+                        sendMessage();
+                    }
+                });
+
+                messageSubmitButton.onclick = function (e) {
+                    sendMessage();
+                };
 
                 chatSocket.onmessage = function (e) {
-                        const data = JSON.parse(e.data);
-                        let messageDisplay = '';
-                        if (data.sender === 'user') {
-                            messageDisplay = '<div class="chat-message m-4"><strong>You:</strong> ' + data.message + '</div>';
-                        } else if (data.sender === 'chatbot') {
-                            messageDisplay = '<div class="chat-message p-4" style="background-color: #f4f4f4;"><strong>Chatbot:</strong> ' + data.message + '</div>';
-                        }
-                        document.querySelector('#chat-messages').innerHTML += messageDisplay;
-
-                        // Scroll to the bottom
-                        document.querySelector('#chat-messages').scrollTop = document.querySelector('#chat-messages').scrollHeight;
-                    };
-
-
-
-
-                document.querySelector('#chat-message-submit').onclick = function (e) {
-                    const messageInputDom = document.querySelector('#chat-message-input');
-                    const message = messageInputDom.value;
-                    if (message!=''){
-                        chatSocket.send(JSON.stringify({
-                        'message': message
-                    }));
+                    const data = JSON.parse(e.data);
+                    let messageDisplay = '';
+                    if (data.sender === 'user') {
+                        messageDisplay = '<div class="chat-message m-4"><strong>You:</strong> ' + data.message + '</div>';
+                    } else if (data.sender === 'chatbot') {
+                        messageDisplay = '<div class="chat-message p-4" style="background-color: #f4f4f4;"><strong>Chatbot:</strong> ' + data.message + '</div>';
                     }
-                    
-                    messageInputDom.value = '';
+                    document.querySelector('#chat-messages').innerHTML += messageDisplay;
+                    document.querySelector('#chat-messages').scrollTop = document.querySelector('#chat-messages').scrollHeight;
+                };
+                document.querySelector('.btn-danger').onclick = function () {
+                    fetch('{% url "chat_home" %}', {  // Post to the chat_home view
+                        method: 'POST',
+                        headers: {
+                            'X-CSRFToken': '{{ csrf_token }}', // CSRF token for security
+                            'Content-Type': 'application/json',
+                            'X-Requested-With': 'XMLHttpRequest' // Indicate that this is an AJAX request
+                        },
+                        body: JSON.stringify({ action: 'clear_history' })
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.status === 'success') {
+                                // Clear the chat log in the frontend
+                                document.getElementById('chat-messages').innerHTML = '';
+                            }
+                        });
                 };
             </script>
+
 
         </div>
 

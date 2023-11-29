@@ -1,77 +1,83 @@
-
 /* Apply a background color to the entire body of the page */
 body {
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    min-height: 100vh; /* Full viewport height */
-    margin: 0; /* Remove the default margin */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding-top: 50px; /* Height of the alert, ensures content is not hidden behind it */
 }
-
+span{
+    display: flex;
+    justify-content: right;
+}
 /* Style the container holding the form */
 .container {
-    background-color: white; /* White background for the form */
-    border-radius: 5px; /* Rounded corners */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
-    padding: 20px; /* Padding inside the container */
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
     width: 100%;
-    margin-left: 10rem;
-    max-width: 400px; /* Maximum width of the container */
-    margin: 20px 10px; /* Margin on the top and bottom is 20px, left and right is 10px */
-    box-sizing: border-box; /* Include padding in the width */
+    max-width: 400px;
+    margin: 20px 10px;
+    box-sizing: border-box;
 }
 
-.alert {
-    display: flex;
-    justify-content: space-between;
-    align-items: center; 
+/* Alert container styles */
+.alert-container {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
 }
 
+/* Main container style */
 .main-container {
-    padding-top: 40px; /* Provide enough space for the alert */
+    padding-top: 60px; /* Space for the alert */
 }
 
+/* Alert styling */
+.alert {
+    margin: 0 auto;
+}
 
 /* Style the title of the form */
-h3.register {
-    color: #0c0a0a; /* Dark text for better readability */
-    text-align: center; /* Center the title text */
-    margin-bottom: 1rem; /* Margin at the bottom of the title */
+h3.register, h1 {
+    color: #0c0a0a;
+    text-align: center;
+    margin-bottom: 1rem;
 }
-h1{
-    color: #0c0a0a; /* Dark text for better readability */
-    text-align: center; /* Center the title text */
-    margin-bottom: 1rem; /* Margin at the bottom of the title */
+
+h1 {
     margin-right: 7rem;
 }
+
 /* Style each form field */
 form input, form button {
-    width: 100%;/* Full width minus padding */
+    width: 100%;
     height: 100%;
-    
-    margin-bottom: 0.5rem; /* Margin at the bottom of each form field */
+    margin-bottom: 0.5rem;
 }
 
 /* Style the form submission button */
 button {
-    background-color: #0056b3; /* Blue background for the button */
-    color: white; /* White text on the button */
-    border: none; /* No border on the button */
-    padding: 10px 0; /* Padding inside the button */
-    margin-top: 1rem; /* Margin above the button */
-    cursor: pointer; /* Pointer cursor on hover */
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    padding: 10px 0;
+    margin-top: 1rem;
+    cursor: pointer;
     width: 100%;
 }
 
 /* Style for the login link */
 p1 {
-    display: block; /* Display link as a block */
-    text-align: center; /* Center the link text */
-    margin-top: 1rem; /* Margin above the link */
-     /* Blue text for the link */
-    text-decoration: none; /* No underline on the link */
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
 }
 
 a:hover {
-    text-decoration: underline; /* Underline on hover for the link */
+    text-decoration: underline;
 }

@@ -7,5 +7,6 @@ urlpatterns = [
     path('', LoginView.as_view(template_name='registration/login.html'), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('chat_home/', views.chat_home, name='chat_home'),
+    # path('chat_with_bot/', views.chat_with_bot, name='chat_with_bot'),
     # Add other chat-related URLs here
 ]

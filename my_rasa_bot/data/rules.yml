@@ -1,0 +1,46 @@
+version: "3.1"
+rules:
+- rule: Greet User
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- rule: Request for a restaurant
+  steps:
+  - intent: request_restaurant
+  - action: utter_request_restaurant
+
+- rule: Affirmation from user
+  steps:
+  - intent: affirm
+  - action: utter_affirm
+
+- rule: Denial from user
+  steps:
+  - intent: deny
+  - action: utter_deny
+
+- rule: User provides information
+  steps:
+  - intent: inform
+  - action: utter_inform
+
+- rule: User says thank you
+  steps:
+  - intent: thankyou
+  - action: utter_thankyou
+
+- rule: Chit-chat with the user
+  steps:
+  - intent: chitchat
+  - action: utter_chitchat
+
+- rule: User wants to stop
+  steps:
+  - intent: stop
+  - action: utter_stop
+
+- rule: Bot Challenge
+  steps:
+  - intent: bot_challenge
+  - action: utter_bot_challenge

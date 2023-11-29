@@ -1,0 +1,43 @@
+version: "3.1"
+stories:
+- story: Greeting interaction
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- story: Restaurant request and information interaction
+  steps:
+  - intent: request_restaurant
+  - action: utter_request_restaurant
+  - intent: inform
+  - action: utter_inform
+
+- story: User affirmation
+  steps:
+  - intent: affirm
+  - action: utter_affirm
+
+- story: User denial
+  steps:
+  - intent: deny
+  - action: utter_deny
+
+- story: User gratitude
+  steps:
+  - intent: thankyou
+  - action: utter_thankyou
+
+- story: Chit-chat
+  steps:
+  - intent: chitchat
+  - action: utter_chitchat
+
+- story: User stopping conversation
+  steps:
+  - intent: stop
+  - action: utter_stop
+
+- story: Bot challenge response
+  steps:
+  - intent: bot_challenge
+  - action: utter_bot_challenge
