@@ -1,28 +1,44 @@
-html, body {
-    height: 100%; /* Make sure html and body take up the full viewport height */
-    margin: 0; /* Remove any default margins */
-    padding: 0; /* Remove any default padding */
-    display: flex; /* Use flexbox to center and stretch the content */
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
-    flex-direction: column; /* Stack children vertically */
+
+.chat-log{
+    height: 28rem;
+    max-height: 28rem;
+    border: 1px solid black;
+    overflow-y: auto;
+    border-radius: 1px;
+    scrollbar-width: none;
+    
 }
 
-/* You may want to give a class to the div that wraps the content for better control */
-.wrapper {
-    width: 100%; /* Take up the full width */
-    flex-grow: 1; /* Allow the wrapper to grow and fill the space */
-    display: flex; /* Use flexbox inside the wrapper too */
-    flex-direction: column; /* Stack children vertically */
-    justify-content: center; /* Center content vertically */
-    align-items: center; /* Center content horizontally */
+.chat-log::-webkit-scrollbar {
+    display: none; /* For WebKit browsers like Chrome and Safari */
+}
+/* .chat-messages{
+    padding: 10px;
+    margin: 10px;
+    
+} */
+#chat-message-submit{
+    width: -webkit-fill-available;
+    
 }
 
-.alert {
-    width: 100%; /* Let the alert take the full width */
-    border-radius: 0; /* Optional: remove border radius if you want it to be full-width without rounded corners */
+/* .col-md-1{
+    display: flex;
+    justify-content: center;
+} */
+h1{
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
 }
 
-h1 {
-    margin: 0; /* Remove default margin from headings */
+.logout{
+    display: flex;
+    justify-content: right;
+    padding-right: 5rem;
+    color: black;
+}
+.container{
+    margin-top: 1rem;
+
 }

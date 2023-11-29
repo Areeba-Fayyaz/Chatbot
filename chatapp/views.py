@@ -5,6 +5,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect, render, HttpResponse
 from django.contrib.auth.views import LoginView, LogoutView
 from .forms import CustomUserCreationForm
+from django.contrib.auth.decorators import login_required
+from .models import ChatMessage
+
 
 # Registration view
 def register(request):
@@ -19,7 +22,10 @@ def register(request):
         form = CustomUserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
 
+@login_required
 def chat_home(request):
-    return render(request, 'chat_home.html')
+    # message_history = ChatMessage.objects.filter(user=request.user).order_by('-created_at')[:50]
+    message_history = ChatMessage.objects.filter(user=request.user).order_by('created_at')
+    return render(request, 'chat_home.html', {'message_history': message_history})
 
 

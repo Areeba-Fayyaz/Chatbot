@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'chatapp',
+
+    
 ]
 
 MIDDLEWARE = [
@@ -68,7 +72,9 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'mychatbot.wsgi.application'
+# WSGI_APPLICATION = 'mychatbot.wsgi.application'
+
+ASGI_APPLICATION = 'mychatbot.asgi.application'
 
 
 # Database
@@ -128,5 +134,20 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL='chat_home'
 LOGOUT_REDIRECT_URL='login'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'chatapp/static'),
 ]
+# settings.py
+
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+
+
+
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
+}
