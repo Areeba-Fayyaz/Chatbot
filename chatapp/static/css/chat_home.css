@@ -1,0 +1,28 @@
+html, body {
+    height: 100%; /* Make sure html and body take up the full viewport height */
+    margin: 0; /* Remove any default margins */
+    padding: 0; /* Remove any default padding */
+    display: flex; /* Use flexbox to center and stretch the content */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    flex-direction: column; /* Stack children vertically */
+}
+
+/* You may want to give a class to the div that wraps the content for better control */
+.wrapper {
+    width: 100%; /* Take up the full width */
+    flex-grow: 1; /* Allow the wrapper to grow and fill the space */
+    display: flex; /* Use flexbox inside the wrapper too */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+}
+
+.alert {
+    width: 100%; /* Let the alert take the full width */
+    border-radius: 0; /* Optional: remove border radius if you want it to be full-width without rounded corners */
+}
+
+h1 {
+    margin: 0; /* Remove default margin from headings */
+}
