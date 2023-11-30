@@ -17,7 +17,7 @@ This Django-Chatbot is a sophisticated web application designed to offer a real-
 - Python 3.8+
 - Django 3.2+
 - Rasa 2.8+
-- Redis installed and running
+- Redis (installed and running)
 - Celery 5.1+
 
 ### Installation Steps
@@ -25,38 +25,46 @@ This Django-Chatbot is a sophisticated web application designed to offer a real-
 ```sh
 git clone https://github.com/Areeba-Fayyaz/Chatbot.git
 cd Chatbot
+```
 
 #### Virtual Environment Setup
 ```sh
 python -m venv venv
 source venv/bin/activate  # Linux/Mac
 venv\Scripts\activate  # Windows
+```
 
 #### Install Dependencies
 ```sh
 pip install -r requirements.txt
+```
 
 #### Run Django Migrations
 ``` sh
 python manage.py migrate
+```
 
 #### Running the Servers
 Start the Django Server
 ```sh
 python manage.py runserver
+```
 
 #### Start the Celery Worker
 Open a new terminal and run:
 ```sh
 celery -A mychatbot worker -l info -P gevent
+```
 
-##### Start the Rasa Server with API Enabled
+#### Start the Rasa Server with API Enabled
 
-#### Open a new terminal and run:
+Open a new terminal and run:
 ``` sh
 rasa run --enable-api
+```
 
 Ensure Redis Server is Running
+
 Redis should be running as a message broker for Celery.
 
 #### Accessing the Application
