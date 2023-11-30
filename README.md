@@ -70,4 +70,4 @@ Redis should be running as a message broker for Celery.
 #### Accessing the Application
 Navigate to http://localhost:8000 in a web browser to interact with the chatbot.
 
-By following these steps, your Django application will be able to interact with the Rasa server through API calls, enabling real-time communication in your chatbot.
+By following these steps, your Django application will be able to interact with the Rasa server, enabling real-time communication in your chatbot.
