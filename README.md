@@ -1,4 +1,4 @@
-# Django-Rasa Chatbot Project
+# Django-Chatbot Project
 
 ## Project Overview
 This Django-Rasa Chatbot is a sophisticated web application designed to offer a real-time interactive chat experience. It integrates Django's robust web development capabilities with Rasa's conversational AI, enhanced by WebSockets for live communication, and uses Celery with Redis for efficient background task processing and message queuing. The application is tailored for an engaging user experience with user authentication, personalized chat histories, and real-time response capabilities.
